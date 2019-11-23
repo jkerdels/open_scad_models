@@ -6,13 +6,13 @@
 hole_extra = 0.0;
 
 // overall dimensions of the box
-b_width      = 180;
+b_width      = 80;
 b_depth      = 50;
 b_height     = 50; // height includes the lid
 b_lid_height = 15;
 
 // size of the bevel
-b_prism      = 5;
+b_prism      = 3;
 
 // thickness of the walls
 b_walls      = 2;
@@ -181,10 +181,10 @@ module corner_lip (height,lip_height,lip_width,prism,walls,screw_heads) {
                 }
             }
 
-            translate([0,0,-1-lip_width])
-            cube([sin(45)*prism+2*post_r+walls+1,sin(45)*prism+post_r,lip_height*2+2+lip_width]);
-            translate([0,0,-1-lip_width])
-            cube([sin(45)*prism+post_r,sin(45)*prism+2*post_r+walls+1,lip_height*2+2+lip_width]);        
+            translate([0,-walls-lip_width-1,-1-lip_width])
+            cube([sin(45)*prism+2*post_r+walls+lip_width+1,sin(45)*prism+post_r+walls+lip_width+1,lip_height*2+2+lip_width]);
+            translate([-lip_width-1-walls,-1-lip_width,-1-lip_width])
+            cube([sin(45)*prism+post_r+walls+lip_width+1,sin(45)*prism+2*post_r+walls+2*lip_width+1,lip_height*2+2+lip_width]);        
         }
         
         difference(){
